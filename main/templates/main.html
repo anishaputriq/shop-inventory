@@ -1,6 +1,18 @@
-<h1>Shopping Inventory Page</h1>
+<html>
+<head>
+    <title>Shopping Inventory Page</title>
+</head>
+<body>
+    <h1>Shopping Inventory Page</h1>
 
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
+    <ul>
+        {% for item in items %}
+            <li>
+                <h5>Name: {{ item.name }}</h5>
+                <p>Amount: {{ item.amount }}</p>
+                <p>Description: {{ item.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
