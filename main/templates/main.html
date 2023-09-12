@@ -1,9 +1,35 @@
 <html>
 <head>
     <title>Shopping Inventory Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Untuk mengisi seluruh tinggi viewport */
+            margin: 0; /* Menghilangkan margin bawaan */
+        }
+        /* Gantilah style ini sesuai dengan kebutuhan Anda */
+        h1 {
+            font-size: 26px;
+            font-family: 'Roboto', sans-serif;
+        }
+        h2 {
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        ul {
+            font-size: 16px;
+            list-style-type: upper-alpha;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
-<body>
-    <h1>Shopping Inventory Page</h1>
+<body style="background-color: cornsilk;">
+    <h1> ~ Shopping Inventory Page ~</h1>
+    <h2> Inventory List : </h2>
 
     <ul>
         {% for item in items %}
