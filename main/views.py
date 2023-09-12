@@ -22,6 +22,8 @@ def show_main(request):
 
     context = {
         'items': items,
+        'name' : 'Anisha Putri Qonitah',
+        'class' : 'PBP D'
     }
 
     return render(request, "main.html", context)

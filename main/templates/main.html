@@ -32,6 +32,8 @@
     <h2> Inventory List : </h2>
 
     <ul>
+        <p>{{ name }}</p>
+        <p>{{ class }}</p>
         {% for item in items %}
             <li>
                 <h5>Name: {{ item.name }}</h5>
