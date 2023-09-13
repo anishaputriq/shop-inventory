@@ -35,6 +35,7 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
         di dalam direktori buat file README.md dan tulis jangan lupa di commit push
 
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+    ![gambar bagan](https://github.com/anishaputriq/shop-inventory/blob/e3529d0b2f349cdaf59896699462609fb1181479/bagan%20.png)
     urls.py mengatur bagaimana URL akan di-mapping ke view yang spesifik.
     views.py berisi view yang mengatur logika aplikasi dan berkomunikasi dengan model jika perlu. View ini mengembalikan respons berdasarkan permintaan yang diterimanya.
     models.py mendefinisikan struktur basis data dan kelas-kelas model yang dapat digunakan oleh aplikasi Anda. View dapat menggunakan model ini untuk berinteraksi dengan basis data.
