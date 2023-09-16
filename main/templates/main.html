@@ -1,51 +1,40 @@
-<html>
-<head>
-    <title>Shopping Inventory Page</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0; /* Menghilangkan margin bawaan */
-        }
-        /* Gantilah style ini sesuai dengan kebutuhan */
-        h1 {
-            background-color: pink;
-            font-size: 26px;
-            font-family: 'Roboto', sans-serif;
-        }
-        h2 {
-            font-size: 20px;
-            font-family: 'Roboto', sans-serif;
-        }
-        h5 {
-            background-color: rgb(240, 233, 204);
-            font-size: 20px;
-            font-family: 'Roboto', sans-serif;
-        }
-        ul {
-            font-size: 16px;
-            list-style-type: upper-alpha;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
-    </style>
-</head>
-<body style="background-color: cornsilk;">
-    <h1> ~ Shopping Inventory Page ~</h1>
-    <h2> Inventory List : </h2>
+{% extends 'base.html' %}
 
-    <ul>
-        <p>{{ name }}</p>
-        <p>{{ class }}</p>
-        {% for item in items %}
-            <li>
-                <h5>Name: {{ item.name }}</h5>
-                <p>Amount: {{ item.amount }}</p>
-                <p>Description: {{ item.description }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% block content %}
+    <h1>Shopping List Page</h1>
+
+    <h5>Name:</h5>
+    <p>{{name}}</p>
+
+    <h5>Class:</h5>
+    <p>{{class}}</p>
+
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for product in products %}
+        <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.date_added}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+{% endblock content %}
