@@ -63,3 +63,22 @@ Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
     MVVM memiliki komponen ViewModel yang khusus untuk mengelola tampilan dan presentasi data. Ini memisahkan tugas Controller dan View dalam pengembangan.
     MVC dan MVT lebih umum digunakan dalam pengembangan aplikasi web berbasis server, sedangkan MVVM sering digunakan dalam pengembangan aplikasi berbasis klien (seperti aplikasi desktop atau aplikasi seluler).
     MVT khusus digunakan dalam kerangka kerja web Django.
+
+...............................................................................................................
+
+Tugas 3
+Apa perbedaan antara form POST dan form GET dalam Django?
+
+Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+
+Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    Membuat input form untuk menambahkan objek model pada app sebelumnya.
+    Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+
+    Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+
+    Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+
+    Melakukan add-commit-push ke GitHub.
