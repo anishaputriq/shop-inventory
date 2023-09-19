@@ -39,8 +39,17 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
         dalam views.py show_main buat variabel baru dengan nama item yang menyimpan nilai jumlah semua item dengan cara item.object.count
         dalam main.html tambahkan {{item}} dan kata-katanya
 
-
 Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+HTML
+ ![gambar postman HTML](https://github.com/anishaputriq/shop-inventory/blob/main/gambar%20postman/HTML.png)
+ XML
+ ![gambar postman XML](https://github.com/anishaputriq/shop-inventory/blob/main/gambar%20postman/XML.png)
+ JSON
+ ![gambar postman JSON](https://github.com/anishaputriq/shop-inventory/blob/main/gambar%20postman/JSON.png)
+ XML BY ID
+ ![gambar postman XML BY ID](https://github.com/anishaputriq/shop-inventory/blob/main/gambar%20postman/XML%20ID.png)
+ JSON BY ID
+ ![gambar postman JSON BY ID](https://github.com/anishaputriq/shop-inventory/blob/main/gambar%20postman/JSON%20ID.png)
 
 ...............................................................................................................
 
