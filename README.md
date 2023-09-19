@@ -2,6 +2,49 @@ Anisha Putri Qonitah - 2206083256
 PBP D
 link adaptable -- tidak bisa deploy :/
 
+Tugas 3
+Apa perbedaan antara form POST dan form GET dalam Django?
+    Form POST: Ketika mengirimkan formulir dengan metode POST dalam Django, data yang dikirimkan tidak ditampilkan di URL. Data tersebut dikirim sebagai bagian dari tubuh permintaan HTTP, yang tidak terlihat oleh pengguna. Form POST biasanya digunakan untuk mengirim data yang sensitif atau besar, seperti kata sandi atau file.
+
+    Form GET: Dalam form GET, data yang dikirim ditambahkan ke URL sebagai parameter query string. Ini membuat data tersebut dapat dilihat oleh pengguna dan tersimpan dalam riwayat web browser. Form GET biasanya digunakan untuk permintaan yang bersifat idempoten (tidak mengubah data di server) dan ketika ingin data tersebut dapat dibagikan atau disimpan dalam bookmark.
+
+Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+    XML (eXtensible Markup Language): XML adalah bahasa markup yang digunakan untuk mengatur dan mengirimkan data terstruktur. Ini sering digunakan dalam pertukaran data antara sistem yang berbeda dan mendukung validasi dengan skema. XML berfokus pada struktur hierarki dan umumnya lebih berat dalam hal sintaksis.
+
+    JSON (JavaScript Object Notation): JSON adalah format pertukaran data yang ringkas dan mudah dibaca oleh mesin dan manusia. Ini berfokus pada objek dan array, membuatnya ideal untuk pertukaran data dalam bahasa pemrograman. JSON sering digunakan dalam aplikasi web modern karena ringkas dan efisien.
+
+    HTML (Hypertext Markup Language): HTML adalah bahasa markup yang digunakan untuk membuat halaman web. Ini berfokus pada presentasi dan struktur tampilan. Meskipun tidak dirancang untuk pertukaran data, HTML sering digunakan untuk menampilkan data dalam tampilan web.
+
+Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+    JSON ringkas dan mudah dibaca, membuatnya efisien dalam pengiriman data melalui jaringan.
+    Dukungan yang luas dalam berbagai bahasa pemrograman membuatnya mudah diimplementasikan dalam berbagai teknologi web.
+    JSON mendukung struktur data berbasis objek dan array, yang sesuai dengan cara modern aplikasi web menyusun dan mengelola data.
+    JSON mendukung tipe data umum seperti string, angka, boolean, objek, dan array, sehingga cocok untuk berbagai jenis data.
+    JSON mendukung data terstruktur dan fleksibel tanpa memerlukan skema yang kaku, memudahkan pengembangan dan evolusi aplikasi.
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    Membuat input form untuk menambahkan objek model pada app sebelumnya.
+        membuat forms.py untuk menerima data item baru
+        import Itemform ke views.py dan buat fungsi baru (create_product) 
+    Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+        mengimport httpresponse dan serializers kedalam views.py
+        membuat fungsi dengan parameter request yang menyimpan hasil query dari seluruh data yang ada pada Item
+        buat semua fungsi untuk HTML, XML, JSON, XML by ID, dan JSON by ID.
+    Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+        import fungsi tadi ke urls.py
+        tambahkan path url ke urlpatterns
+        cek project dengan runserver dan buka localhost 
+    Melakukan add-commit-push ke GitHub.
+    Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data
+        dalam views.py show_main buat variabel baru dengan nama item yang menyimpan nilai jumlah semua item dengan cara item.object.count
+        dalam main.html tambahkan {{item}} dan kata-katanya
+
+
+Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+
+...............................................................................................................
+
+Tugas 2
 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
     = Membuat sebuah proyek Django baru.
         buat direktori baru dan hubungkan dengan repositori
@@ -63,22 +106,3 @@ Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
     MVVM memiliki komponen ViewModel yang khusus untuk mengelola tampilan dan presentasi data. Ini memisahkan tugas Controller dan View dalam pengembangan.
     MVC dan MVT lebih umum digunakan dalam pengembangan aplikasi web berbasis server, sedangkan MVVM sering digunakan dalam pengembangan aplikasi berbasis klien (seperti aplikasi desktop atau aplikasi seluler).
     MVT khusus digunakan dalam kerangka kerja web Django.
-
-...............................................................................................................
-
-Tugas 3
-Apa perbedaan antara form POST dan form GET dalam Django?
-
-Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
-
-Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
-
-Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
-    Membuat input form untuk menambahkan objek model pada app sebelumnya.
-    Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
-
-    Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
-
-    Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
-
-    Melakukan add-commit-push ke GitHub.

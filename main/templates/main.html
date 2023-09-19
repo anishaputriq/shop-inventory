@@ -1,6 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    body {
+        background-color: oldlace;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    h1 {
+        background-color: pink;
+        font-size: 26px;
+        font-family: 'Roboto', sans-serif;
+    }
+    h2 {
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+    }
+    h5 {
+        background-color: rgb(240, 233, 204);
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+    }
+    th {
+        font-size: 16px;
+        list-style-type: upper-alpha;
+        padding: 25;
+        font-family: 'Roboto', sans-serif;
+    }
+    table, th, td {
+        border: 1px solid white;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+    th, td {
+        font-family: 'Roboto', sans-serif;
+        background-color: #96D4D4;
+    }
+</style>
+
     <h1>Shopping Inventory Page</h1>
 
     <h5>Name:</h5>
@@ -14,7 +53,7 @@
 <table>
     <tr>
         <th>Name</th>
-        <th>Price</th>
+        <th>Amount</th>
         <th>Description</th>
         <th>Date Added</th>
     </tr>
@@ -24,7 +63,7 @@
     {% for product in products %}
         <tr>
             <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
+            <td>{{product.amount}}</td>
             <td>{{product.description}}</td>
             <td>{{product.date_added}}</td>
         </tr>
