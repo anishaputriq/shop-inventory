@@ -2,6 +2,27 @@ Anisha Putri Qonitah - 2206083256
 PBP D
 link adaptable -- tidak bisa deploy :/
 
+Tugas 4
+Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+
+    Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+
+    Menghubungkan model Item dengan User.
+
+    Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+    Melakukan add-commit-push ke GitHub.
+
+...............................................................................................................
+
 Tugas 3
 Apa perbedaan antara form POST dan form GET dalam Django?
     Form POST: Ketika mengirimkan formulir dengan metode POST dalam Django, data yang dikirimkan tidak ditampilkan di URL. Data tersebut dikirim sebagai bagian dari tubuh permintaan HTTP, yang tidak terlihat oleh pengguna. Form POST biasanya digunakan untuk mengirim data yang sensitif atau besar, seperti kata sandi atau file.
