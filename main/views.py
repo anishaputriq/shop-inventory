@@ -91,8 +91,23 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-# def increment_item(request, item_id):
-#     item = Item.objects.get(pk=item_id)
-#     item.amount += 1
-#     item.save()
-#     return redirect('show_main')
+def add_product(request, product_id):
+    if request.method == 'POST' and 'Tambah' in request.POST:
+        product = Item.objects.get(id = product_id)
+        product.amount += 1
+        product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def decrement_product(request, product_id):
+    if request.method == 'POST' and 'Kurang' in request.POST:
+        product = Item.objects.get(id = product_id)
+        if product.amount > 0 :
+            product.amount -= 1
+        product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def remove_product(request, product_id):
+    if request.method == 'POST' and 'Hapus' in request.POST:
+        product = Item.objects.get(id = product_id)
+        product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
