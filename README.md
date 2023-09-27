@@ -50,6 +50,11 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
         menambahkan last_login ke dalam context show_main
         menambahkan kata kata last login ke dalam main.html
 
+    Mengimplementasi Bonus
+        membuat fungsi add, decrement dan remove product dalam view.py
+        import fungsi, tambahkan path ke urlpatterns
+        tambahkan button di main.html
+
     Melakukan add-commit-push ke GitHub.
 
 ...............................................................................................................
