@@ -93,6 +93,13 @@
                 </button>
             </form>
         </td>
+        <td>
+            <a href="{% url 'main:edit_product' product.pk %}">
+                <button>
+                    Edit
+                </button>
+            </a>
+        </td>
     </tr>
     {% endfor %}
 </table>
