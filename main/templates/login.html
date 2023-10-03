@@ -6,13 +6,24 @@
 
 {% block content %}
 <style>
+    body{
+        background-image: url('https://raw.githubusercontent.com/anishaputriq/shop-inventory/main/gambar%20website/login.png');
+        background-size: auto; /* Mengatur latar belakang agar mencakup seluruh area elemen */
+        background-repeat: no-repeat; /* Menghindari pengulangan gambar jika elemen melebihi gambar */
+        background-position: center;
+    }
     .login {
-        width: 300px; /* Lebar form login */
+        width: 400px; /* Lebar form login */
+        background-color: #0C1431;
         margin: 0 auto; /* Mengatur margin otomatis pada sisi kiri dan kanan, membuat form berada di tengah */
         padding: 20px; /* Ruang dalam form login */
-        border: 1px solid #ccc; /* Garis tepi untuk form login */
-        background-color: #f9f9f9; /* Warna latar belakang form login */
         text-align: center; /* Teks berada di tengah form login */
+        border-radius: 3%;
+        color: white; /* Mengatur warna teks menjadi putih */
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
     }
     
     /* Styling lainnya sesuai kebutuhan Anda */
@@ -25,7 +36,7 @@
         background-color: #00ffaa;
         color: #fff;
         border: none;
-        padding: 10px 20px;
+        padding: 8px 15px;
         cursor: pointer;
     }
 </style>
