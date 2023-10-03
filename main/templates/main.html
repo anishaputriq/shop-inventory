@@ -2,121 +2,172 @@
 
 {% block content %}
 <style>
-    body {
-        background-color: oldlace;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    body{
+        background-image: url('https://raw.githubusercontent.com/anishaputriq/shop-inventory/main/gambar_website/login.png');
+        background-size: auto; /* Mengatur latar belakang agar mencakup seluruh area elemen */
+        background-repeat: no-repeat; /* Menghindari pengulangan gambar jika elemen melebihi gambar */
+        background-position: center;
+        font-size:medium;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        position: absolute;
     }
     h1 {
-        background-color: pink;
         font-size: 26px;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Baskerville Regular', Baskerville;
+        justify-items: center;
+        margin: 4;
+        background-color: aliceblue;
     }
     h2 {
         font-size: 20px;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Baskerville Bold', Baskerville;
     }
     h5 {
-        background-color: rgb(240, 233, 204);
         font-size: 20px;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Baskerville Regular', Baskerville;
     }
     th {
         font-size: 16px;
         list-style-type: upper-alpha;
         padding: 25;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Baskerville Regular', Baskerville;
     }
     table, th, td {
+        border-radius: 3%;
         border: 1px solid white;
         border-collapse: collapse;
-        padding: 10px;
+        padding: 5px;
+        align-items: center;
+        font-family: 'Baskerville Regular', Baskerville;
+        margin: 0;
+        align-items: center;
     }
     th, td {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Baskerville Regular', Baskerville;
         background-color: #96D4D4;
     }
+
+    .container mt-5{
+        margin: 3;
+    }
+
+    .navbar-expand-lg bg-body-tertiary{
+        background: #0C1431;
+    }
+
+    tbody tr:last-child {
+        color: rgb(6, 46, 19);
+        background-color: aliceblue; /* Warna latar belakang untuk baris terakhir */
+        font-weight: bold; /* Atur teks menjadi tebal jika diinginkan */
+    }
+
+
 </style>
 
-    <h1>Shopping Inventory Page</h1>
-
-    <h5>Name:</h5>
-    <p>{{name}}</p>
-
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-
-    <th>Kamu menyimpan {{item}} item pada aplikasi ini</th>
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Description</th>
-        <th>Date Added</th>
-        <th>Add</th>
-        <th>Reduce</th>
-        <th>Remove</th>
-    </tr>
-
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-    {% for product in products %}
-    <tr class = "add-colortext">
-        <td>{{product.name}}</td>
-        <td>{{product.amount}}</td>
-        <td>{{product.description}}</td>
-        <td>{{product.date_added}}</td>
-        <td>
-            <form action="{% url 'main:add_product' product.id %}" method = "post">
-                {% csrf_token %}
-                <button style="color: green; font-weight: bolder; align-items: center" type = "submit" name = "Tambah">
-                    Tambah
-                </button>
-            </form>
-        </td>
-        <td>
-            <form action="{% url 'main:decrement_product' product.id %}" method = "post">
-                {% csrf_token %}
-                <button style="color: orange; font-weight: bolder; align-items: center" type = "submit" name="Kurang">
-                    Kurang
-                </button>
-            </form>
-        </td>
-        <td>
-            <form action="{% url 'main:remove_product' product.id %}" method = "post">
-                {% csrf_token %}
-                <button style="color: red; font-weight: bolder; align-items: center" type = "submit" name="Hapus">
-                    Hapus
-                </button>
-            </form>
-        </td>
-        <td>
-            <a href="{% url 'main:edit_product' product.pk %}">
-                <button>
-                    Edit
-                </button>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Shop Inventory</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
             </a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="{% url 'main:create_product' %}">
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Add Product"></td>
+            </tr>
+        </a>
+        <a href="{% url 'main:logout' %}">
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Logout"></td>
+            </tr>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+    <h1>Welcome, {{name}} !</h1>
+
+    <h5>Kamu menyimpan {{item}} item pada aplikasi ini</h5>
+<div class="container mt-5">
+    <table>
+        <h5>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date Added</th>
+            <th>Add</th>
+            <th>Reduce</th>
+            <th>Remove</th>
+            <th>Edit</th>
+        </h5>
+
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+            <tbody>
+            {% for product in products %}
+            <tr class = "add-colortext">
+                <td>{{product.name}}</td>
+                <td>{{product.amount}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.date_added}}</td>
+                <td>
+                    <form action="{% url 'main:add_product' product.id %}" method = "post">
+                        {% csrf_token %}
+                        <button style="color: rgb(22, 224, 49); align-items: center" type = "submit" name = "Tambah">
+                            Tambah
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{% url 'main:decrement_product' product.id %}" method = "post">
+                        {% csrf_token %}
+                        <button style="color: rgb(250, 225, 0); align-items: center" type = "submit" name="Kurang">
+                            Kurang
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{% url 'main:remove_product' product.id %}" method = "post">
+                        {% csrf_token %}
+                        <button style="color: rgb(218, 10, 10); align-items: center" type = "submit" name="Hapus">
+                            Hapus
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <a href="{% url 'main:edit_product' product.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 <br />
 
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
 
 {% endblock content %}

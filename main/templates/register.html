@@ -7,22 +7,26 @@
 {% block content %}  
 <style>
     body{
-        background-image: url('https://raw.githubusercontent.com/anishaputriq/shop-inventory/main/gambar%20website/register.png');
+        background-image: url('https://raw.githubusercontent.com/anishaputriq/shop-inventory/main/gambar_website/register.png');
         background-size: auto; /* Mengatur latar belakang agar mencakup seluruh area elemen */
         background-position: center;
+    }
+    h1{
+        text-align:center; /* Teks berada di tengah form login */
     }
     .login {
         width: 600px; /* Lebar form login */
         background-color: #87A9DA;
         margin: 0 auto; /* Mengatur margin otomatis pada sisi kiri dan kanan, membuat form berada di tengah */
         padding: 20px; /* Ruang dalam form login */
-        text-align: center; /* Teks berada di tengah form login */
         border-radius: 3%;
         color: white; /* Mengatur warna teks menjadi putih */
         position: absolute;
         transform: translate(-50%,-50%);
         top: 50%;
         left: 50%;
+        font-size: 14px;
+        font-family: 'Baskerville Regular', Baskerville;
     }
     
     /* Styling lainnya sesuai kebutuhan Anda */
@@ -31,7 +35,7 @@
         padding: 10px;
         margin-bottom: 10px;
     }
-    .login_btn {
+    .submit {
         background-color: #00ffaa;
         color: #fff;
         border: none;
