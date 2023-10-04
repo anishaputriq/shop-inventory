@@ -27,6 +27,8 @@
     h5 {
         font-size: 20px;
         font-family: 'Baskerville Regular', Baskerville;
+        color: rgb(0, 0, 0);
+        background-color: #ffffff;
     }
     th {
         font-size: 16px;
@@ -36,7 +38,7 @@
     }
     table, th, td {
         border-radius: 3%;
-        border: 1px solid white;
+        border: 1px solid rgb(88, 88, 88);
         border-collapse: collapse;
         padding: 5px;
         align-items: center;
@@ -57,12 +59,10 @@
         background: #0C1431;
     }
 
-    tbody tr:last-child {
-        color: rgb(6, 46, 19);
-        background-color: aliceblue; /* Warna latar belakang untuk baris terakhir */
-        font-weight: bold; /* Atur teks menjadi tebal jika diinginkan */
-    }
 
+    .custom-row.last-row td {
+        background-color: aliceblue;
+    }
 
 </style>
 
@@ -74,20 +74,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+
         </ul>
         <a href="{% url 'main:create_product' %}">
             <tr>
@@ -110,7 +97,7 @@
     <h5>Kamu menyimpan {{item}} item pada aplikasi ini</h5>
 <div class="container mt-5">
     <table>
-        <h5>
+        <tr>
             <th>Name</th>
             <th>Amount</th>
             <th>Description</th>
@@ -119,50 +106,50 @@
             <th>Reduce</th>
             <th>Remove</th>
             <th>Edit</th>
-        </h5>
+        </tr>
 
         {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
             <tbody>
-            {% for product in products %}
-            <tr class = "add-colortext">
-                <td>{{product.name}}</td>
-                <td>{{product.amount}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.date_added}}</td>
-                <td>
-                    <form action="{% url 'main:add_product' product.id %}" method = "post">
-                        {% csrf_token %}
-                        <button style="color: rgb(22, 224, 49); align-items: center" type = "submit" name = "Tambah">
-                            Tambah
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form action="{% url 'main:decrement_product' product.id %}" method = "post">
-                        {% csrf_token %}
-                        <button style="color: rgb(250, 225, 0); align-items: center" type = "submit" name="Kurang">
-                            Kurang
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form action="{% url 'main:remove_product' product.id %}" method = "post">
-                        {% csrf_token %}
-                        <button style="color: rgb(218, 10, 10); align-items: center" type = "submit" name="Hapus">
-                            Hapus
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <a href="{% url 'main:edit_product' product.pk %}">
-                        <button>
-                            Edit
-                        </button>
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
+                {% for product in products %}
+                <tr class="custom-row{% if forloop.last %} last-row{% endif %}">
+                    <td>{{product.name}}</td>
+                    <td>{{product.amount}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.date_added}}</td>
+                    <td>
+                        <form action="{% url 'main:add_product' product.id %}" method = "post">
+                            {% csrf_token %}
+                            <button style="color: rgb(22, 224, 49); align-items: center" type = "submit" name = "Tambah">
+                                Tambah
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'main:decrement_product' product.id %}" method = "post">
+                            {% csrf_token %}
+                            <button style="color: rgb(250, 225, 0); align-items: center" type = "submit" name="Kurang">
+                                Kurang
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'main:remove_product' product.id %}" method = "post">
+                            {% csrf_token %}
+                            <button style="color: rgb(218, 10, 10); align-items: center" type = "submit" name="Hapus">
+                                Hapus
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="{% url 'main:edit_product' product.pk %}">
+                            <button>
+                                Edit
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
     </table>
 </div>
 

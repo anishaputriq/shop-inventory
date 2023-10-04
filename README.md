@@ -2,7 +2,8 @@ Anisha Putri Qonitah - 2206083256
 PBP D
 link adaptable -- tidak bisa deploy :/
 
-# Tugas 5
+<details>
+<summary> Tugas 5 </summary>
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 ### Universal Selector (*):
 Manfaat: Selector ini memilih semua elemen dalam halaman.
@@ -81,18 +82,32 @@ Bootstrap cocok untuk proyek cepat dengan komponen siap pakai, sedangkan Tailwin
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 ### Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut
-
 ### Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+    Di base.html tambahkan meta name dan Bootstrap CSS dan juga JS.
+    Tambahkan navigation bar menggunakan Bootstrap pada halaman main.html
+    Tambahkan tombol edit di main.html
+    Diatas main.html, login.html, edit_product.html, register.html masukan html tag style 
+    Isi style dengan warna atau backgroud yang diinginkan
 
 ### Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
+    Dalam style ganti backgroud image menjadi gambar yang diinginkan
+    Ganti warna tabel dan font
+    Tambahkan navigation bar (Bootstrap)
+    Pindahkan tombol logout dan add product ke dalam navigation bar
 
 ### Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
-menulis jawaban di read.me dan rapihkan 
+    menulis jawaban di read.me dan rapihkan 
+
 ### Memberikan warna yang berbeda (teks atau background) pada baris terakhir dari item pada inventori anda menggunakan CSS.
+    dalam style tambahkan .custom-row.last-row td dan pilih warna yang sesuai dengan keinginan kita
+    dalam for loop product <tr class="custom-row{% if forloop.last %} last-row{% endif %}"> agar warna yang diubah adalah baris terakhir
+    
 
 ### Melakukan add-commit-push ke GitHub.
+</details>
 
-# Tugas 4
+<details>
+<summary> Tugas 4 </summary>
 ## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
     Django UserCreationForm adalah salah satu bentuk dari Django's built-in forms yang digunakan untuk membuat formulir pendaftaran pengguna. Form ini memudahkan pengembang web untuk membuat formulir pendaftaran pengguna dengan cepat dan mudah. UserCreationForm memerlukan input seperti username, password, dan konfirmasi password. Kelebihannya termasuk kemudahan penggunaan dan integrasi yang baik dengan sistem otentikasi Django, serta validasi bawaan yang membantu mencegah kesalahan saat pendaftaran pengguna. Kekurangannya adalah kemungkinan kurang fleksibel dalam hal desain, sehingga jika Anda memerlukan tampilan atau fitur pendaftaran yang sangat kustom, Anda mungkin perlu menyesuaikan lebih lanjut.
 
@@ -147,9 +162,10 @@ menulis jawaban di read.me dan rapihkan
 
 ### Melakukan add-commit-push ke GitHub.
 
+</details>
 ...............................................................................................................
-
-# Tugas 3
+<details>
+<summary> Tugas 3 </summary>
 ## Apa perbedaan antara form POST dan form GET dalam Django?
     Form POST: Ketika mengirimkan formulir dengan metode POST dalam Django, data yang dikirimkan tidak ditampilkan di URL. Data tersebut dikirim sebagai bagian dari tubuh permintaan HTTP, yang tidak terlihat oleh pengguna. Form POST biasanya digunakan untuk mengirim data yang sensitif atau besar, seperti kata sandi atau file.
 
@@ -200,7 +216,10 @@ menulis jawaban di read.me dan rapihkan
 
 ...............................................................................................................
 
-# Tugas 2
+</details>
+
+<details>
+<summary> Tugas 2 </summary>
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 ### Membuat sebuah proyek Django baru.
     buat direktori baru dan hubungkan dengan repositori
@@ -263,3 +282,5 @@ menulis jawaban di read.me dan rapihkan
     MVVM memiliki komponen ViewModel yang khusus untuk mengelola tampilan dan presentasi data. Ini memisahkan tugas Controller dan View dalam pengembangan.
     MVC dan MVT lebih umum digunakan dalam pengembangan aplikasi web berbasis server, sedangkan MVVM sering digunakan dalam pengembangan aplikasi berbasis klien (seperti aplikasi desktop atau aplikasi seluler).
     MVT khusus digunakan dalam kerangka kerja web Django.
+
+</details>
