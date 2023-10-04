@@ -4,6 +4,7 @@ link adaptable -- tidak bisa deploy :/
 
 <details>
 <summary> Tugas 5 </summary>
+
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 ### Universal Selector (*):
 Manfaat: Selector ini memilih semua elemen dalam halaman.
@@ -108,6 +109,7 @@ Bootstrap cocok untuk proyek cepat dengan komponen siap pakai, sedangkan Tailwin
 
 <details>
 <summary> Tugas 4 </summary>
+
 ## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
     Django UserCreationForm adalah salah satu bentuk dari Django's built-in forms yang digunakan untuk membuat formulir pendaftaran pengguna. Form ini memudahkan pengembang web untuk membuat formulir pendaftaran pengguna dengan cepat dan mudah. UserCreationForm memerlukan input seperti username, password, dan konfirmasi password. Kelebihannya termasuk kemudahan penggunaan dan integrasi yang baik dengan sistem otentikasi Django, serta validasi bawaan yang membantu mencegah kesalahan saat pendaftaran pengguna. Kekurangannya adalah kemungkinan kurang fleksibel dalam hal desain, sehingga jika Anda memerlukan tampilan atau fitur pendaftaran yang sangat kustom, Anda mungkin perlu menyesuaikan lebih lanjut.
 
@@ -163,9 +165,10 @@ Bootstrap cocok untuk proyek cepat dengan komponen siap pakai, sedangkan Tailwin
 ### Melakukan add-commit-push ke GitHub.
 
 </details>
-...............................................................................................................
+
 <details>
 <summary> Tugas 3 </summary>
+
 ## Apa perbedaan antara form POST dan form GET dalam Django?
     Form POST: Ketika mengirimkan formulir dengan metode POST dalam Django, data yang dikirimkan tidak ditampilkan di URL. Data tersebut dikirim sebagai bagian dari tubuh permintaan HTTP, yang tidak terlihat oleh pengguna. Form POST biasanya digunakan untuk mengirim data yang sensitif atau besar, seperti kata sandi atau file.
 
@@ -214,12 +217,12 @@ Bootstrap cocok untuk proyek cepat dengan komponen siap pakai, sedangkan Tailwin
 ### JSON BY ID
  ![gambar postman JSON BY ID](https://github.com/anishaputriq/shop-inventory/blob/main/gambar%20postman/JSON%20ID.png)
 
-...............................................................................................................
 
 </details>
 
 <details>
 <summary> Tugas 2 </summary>
+
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 ### Membuat sebuah proyek Django baru.
     buat direktori baru dan hubungkan dengan repositori
