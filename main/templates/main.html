@@ -3,18 +3,14 @@
 {% block content %}
 <style>
     body{
-        background-image: url('https://raw.githubusercontent.com/anishaputriq/shop-inventory/main/gambar_website/login.png');
+        background-image: url('https://raw.githubusercontent.com/anishaputriq/shop-inventory/main/gambar_website/loginsvg.svg');
         background-size: auto; /* Mengatur latar belakang agar mencakup seluruh area elemen */
         background-repeat: no-repeat; /* Menghindari pengulangan gambar jika elemen melebihi gambar */
         background-position: center;
         font-size:medium;
-        transform: translate(-50%,-50%);
-        top: 50%;
-        left: 50%;
-        position: absolute;
     }
     h1 {
-        font-size: 26px;
+        font-size: 40px;
         font-family: 'Baskerville Regular', Baskerville;
         justify-items: center;
         margin: 4;
@@ -28,7 +24,10 @@
         font-size: 20px;
         font-family: 'Baskerville Regular', Baskerville;
         color: rgb(0, 0, 0);
-        background-color: #ffffff;
+        text-align: center; /* Menengahkan teks secara horizontal */
+        display: flex;
+        align-items: center; /* Menengahkan elemen secara vertikal */
+        justify-content: center; /* Menengahkan teks secara horizontal */
     }
     th {
         font-size: 16px;
@@ -64,6 +63,90 @@
         background-color: aliceblue;
     }
 
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .card {
+        width: 200px;
+        margin-bottom: 20px;
+        text-align: center;
+        align-items: center;
+        padding: 30px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    }
+
+    .card.last-card {
+        background-color: #ebcaca; /* Ganti dengan warna yang Anda inginkan */
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+    }
+
+    .butons {
+        display: flex;
+        align-items: center;
+    }
+
+    .button-38 {
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .35rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    }
+
+    .button-38:hover {
+    background-color: rgb(249,250,251);
+    }
+
+    .button-38:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    }
+
+    .button-38:focus-visible {
+    box-shadow: none;
+    }
+
+    /* CSS */
+    .button-91 {
+    color: #fff;
+    padding: 2px 10px;
+    background-color: #38D2D2;
+    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+
+    border: 0;
+
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    cursor: pointer;
+    }
+
+
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -82,6 +165,7 @@
                 <td><input class="btn login_btn" type="submit" value="Add Product"></td>
             </tr>
         </a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
         <a href="{% url 'main:logout' %}">
             <tr>
                 <td></td>
@@ -95,66 +179,164 @@
     <h1>Welcome, {{name}} !</h1>
 
     <h5>Kamu menyimpan {{item}} item pada aplikasi ini</h5>
-<div class="container mt-5">
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Description</th>
-            <th>Date Added</th>
-            <th>Add</th>
-            <th>Reduce</th>
-            <th>Remove</th>
-            <th>Edit</th>
-        </tr>
 
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-            <tbody>
-                {% for product in products %}
-                <tr class="custom-row{% if forloop.last %} last-row{% endif %}">
-                    <td>{{product.name}}</td>
-                    <td>{{product.amount}}</td>
-                    <td>{{product.description}}</td>
-                    <td>{{product.date_added}}</td>
-                    <td>
-                        <form action="{% url 'main:add_product' product.id %}" method = "post">
-                            {% csrf_token %}
-                            <button style="color: rgb(22, 224, 49); align-items: center" type = "submit" name = "Tambah">
-                                Tambah
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{% url 'main:decrement_product' product.id %}" method = "post">
-                            {% csrf_token %}
-                            <button style="color: rgb(250, 225, 0); align-items: center" type = "submit" name="Kurang">
-                                Kurang
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{% url 'main:remove_product' product.id %}" method = "post">
-                            {% csrf_token %}
-                            <button style="color: rgb(218, 10, 10); align-items: center" type = "submit" name="Hapus">
-                                Hapus
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="{% url 'main:edit_product' product.pk %}">
-                            <button>
-                                Edit
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-    </table>
-</div>
+    <div class="container">
+        <div class="card-container" >
+
+            {% for product in products %}
+                <div class="card {% if forloop.last %}last-card{% endif %}" data-product-id="{{product.id}}">
+                    <h3>{{product.name}}</h3>
+                    <p class="description">{{product.description}}</p>
+                    <p class="amount">Amount: {{product.amount}}</p>
+                    <div class="quantity">
+                        <button class="add-product">+</button>
+                        <span class="amount">{{product.amount}}</span>
+                        <button class="remove-product">-</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 <br />
 
+
+...
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = `<tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date Added</th>
+        </tr>`
+        products.forEach((item) => {
+            htmlString += `\n<tr>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.amount}</td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.date_added}</td>
+        </tr>` 
+        })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+
+    refreshProducts()
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.querySelectorAll('.add-product').forEach(button => {
+        button.addEventListener('click', () => {
+            const productCard = button.closest('.card');
+            const productId = productCard.getAttribute('data-product-id');
+            incrementAmount(productId);
+        });
+    });
+
+    document.querySelectorAll('.remove-product').forEach(button => {
+        button.addEventListener('click', () => {
+            const productCard = button.closest('.card');
+            const productId = productCard.getAttribute('data-product-id');
+            decrementAmount(productId);
+        });
+    });
+
+    // Fungsi untuk menambah produk
+    async function incrementAmount(id) {
+        const response = await fetch(`/add_product/${id}/`);
+        if (response.status === 200) {
+            // Jika penambahan produk berhasil, perbarui daftar produk.
+            refreshProducts();
+        }
+    }
+
+    async function decrementAmount(id) {
+        const response = await fetch(`/decrement_product/${id}/`);
+        if (response.status === 200) {
+            // Jika pengurangan produk berhasil, perbarui daftar produk.
+            refreshProducts();
+        }
+    }
+
+    async function deleteItem(id) {
+        const response = await fetch(`/remove_product/${id}/`);
+        if (response.status === 200) {
+            // Jika penghapusan produk berhasil, perbarui daftar produk.
+            refreshProducts();
+        }
+    }
+
+        
+    document.getElementById("addItemButton").onclick = function () {
+        // Tampilkan modal saat tombol "Add New Item by AJAX" ditekan.
+        document.getElementById("exampleModal").classList.add("is-active");
+    };
+    
+    // Tampilkan modal saat tombol "Add New Item by AJAX" ditekan.
+    document.getElementById("addItemButton").onclick = function () {
+        document.getElementById("exampleModal").classList.add("is-active");
+    };
+    
+    // Tutup modal saat tombol "Cancel" atau latar belakang modal ditekan.
+    document.getElementById("cancelButton").onclick = function () {
+        document.getElementById("exampleModal").classList.remove("is-active");
+    };
+    document.getElementById("closeModal").onclick = function () {
+        document.getElementById("exampleModal").classList.remove("is-active");
+    };
+
+    // Perbarui item saat halaman dimuat.
+    refreshProducts();
+
+</script>
 
 {% endblock content %}

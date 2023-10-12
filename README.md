@@ -3,6 +3,81 @@ PBP D
 link adaptable -- tidak bisa deploy :/
 
 <details>
+<summary> Tugas 6 </summary>
+
+### Perbedaan Antara Asynchronous Programming dan Synchronous Programming:
+
+1. Synchronous Programming:
+   - Pada pemrograman synchronous, tugas-tugas dieksekusi secara berurutan, satu per satu.
+   - Program akan menunggu tugas saat ini selesai sebelum melanjutkan ke tugas berikutnya.
+   - Jika suatu tugas membutuhkan waktu yang lama (misalnya, mengunduh file besar), itu dapat menghentikan seluruh program.
+
+2. Asynchronous Programming:
+   - Dalam pemrograman asynchronous, tugas-tugas dapat dieksekusi secara bersamaan tanpa harus menunggu tugas sebelumnya selesai.
+   - Tugas yang membutuhkan waktu, seperti operasi jaringan atau operasi I/O (input/output), dapat berjalan di latar belakang tanpa menghentikan program utama.
+   - Ini sangat bermanfaat dalam pengembangan web karena memungkinkan aplikasi berinteraksi dengan server dan sumber daya eksternal tanpa menghalangi antarmuka pengguna.
+
+## Paradigma Event-Driven Programming:
+
+- Paradigma event-driven programming adalah pendekatan di mana program merespons kejadian (events) yang terjadi, seperti klik tombol, pengiriman permintaan HTTP, atau perubahan status.
+- Contoh penerapannya dalam tugas ini adalah ketika Anda menggunakan AJAX untuk mengirim permintaan HTTP ke server, Anda menentukan fungsi yang akan dipanggil ketika respons diterima. Fungsi ini akan dijalankan saat respons tiba, mengikuti pola event-driven.
+
+## Penerapan Asynchronous Programming pada AJAX:
+
+- Dalam konteks AJAX (Asynchronous JavaScript and XML), asynchronous programming memungkinkan Anda untuk mengirim permintaan HTTP ke server dan melanjutkan eksekusi kode tanpa harus menunggu respons dari server. Anda menentukan callback yang akan dijalankan ketika respons tiba.
+
+## Perbandingan Fetch API dan jQuery untuk AJAX:
+
+1. Fetch API:
+   - Fetch API adalah API bawaan dalam JavaScript yang memungkinkan Anda untuk mengirim permintaan HTTP asinkron secara sederhana dan kuat.
+   - Ia mendukung promise, yang memudahkan penanganan respons dan kesalahan.
+   - Ia lebih modern, lebih ringan, dan memungkinkan penggunaan terkini seperti async/await.
+
+2. jQuery:
+   - jQuery adalah perpustakaan JavaScript yang memudahkan pengembangan web, termasuk AJAX.
+   - Ia memiliki sintaks yang lebih ringkas daripada Fetch API.
+   - Namun, jQuery adalah perpustakaan yang lebih besar dan mungkin overkill jika Anda hanya memerlukan AJAX.
+
+Penggunaan Fetch API lebih direkomendasikan karena ia adalah bagian dari JavaScript standar, lebih ringan, dan modern dengan dukungan promise. Ini lebih cocok untuk proyek-proyek baru dan memungkinkan praktik terbaik dalam pengembangan web.
+Namun, dalam beberapa kasus, penggunaan jQuery mungkin tetap diperlukan jika Anda sudah memiliki kode yang menggunakan jQuery atau proyek lama yang masih bergantung pada perpustakaan ini.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+### Ubahlah kode cards data item agar dapat mendukung AJAX GET & Lakukan pengambilan task menggunakan AJAX GET.
+    Perbarui kode HTML untuk halaman utama (main.html) untuk menghilangkan item-item yang sebelumnya di-generate oleh template.
+    Tambahkan wadah (container) untuk item-item yang akan diambil melalui AJAX.
+    Implementasi ajax get di scripts sesuai dengan ketentuan
+
+### Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.
+    di main.html buat tombol baru di navigation bar dengan nama add product by AJAX
+    buat modal form di main.html untuk menambahkan item baru
+    buat fungsi add_product agar item baru muncul
+
+### Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.
+    Import from django.views.decorators.csrf import csrf_exempt pada berkas views.py.
+    Di view.py buat fungsi baru dengan nama add_produt_ajax
+    Tambahkan dekorator @csrf_exempt di atas fungsi add_product_ajax
+    
+### Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat & Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+    Buka berkas urls.py pada folder main dan import fungsi get_product_json serta add_product_ajax.
+    Tambahkan path url kedua fungsi tersebut ke dalam urlpatterns.
+
+### Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.
+    di main.html buat async function yaitu refreshProduct yang akan reload item
+
+### Melakukan perintah collectstatic.
+    Perintah ini bertujuan untuk mengumpulkan file static dari setiap aplikasi kamu ke dalam suatu folder yang dapat dengan mudah disajikan pada produksi.
+    di cmd jalankan perindah pyhton manage.py collectstatic
+
+### Melakukan deployment ke PaaS PBP Fasilkom UI dan sertakan tautan aplikasi pada file README.md.
+    isi secret di github
+    mengubah dokku_app_name sesuai ketentuan
+    git commit push di cmd 
+
+
+</details>
+
+<details>
 <summary> Tugas 5 </summary>
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
