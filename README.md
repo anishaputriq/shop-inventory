@@ -1,6 +1,6 @@
 Anisha Putri Qonitah - 2206083256
 PBP D
-link adaptable -- tidak bisa deploy :/
+link adaptable -- http://anisha-putri21-tugas.pbp.cs.ui.ac.id
 
 <details>
 <summary> Tugas 6 </summary>

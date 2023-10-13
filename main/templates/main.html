@@ -181,28 +181,12 @@
     <h5>Kamu menyimpan {{item}} item pada aplikasi ini</h5>
 
     <div class="container">
-        <div class="card-container" >
-
-            {% for product in products %}
-                <div class="card {% if forloop.last %}last-card{% endif %}" data-product-id="{{product.id}}">
-                    <h3>{{product.name}}</h3>
-                    <p class="description">{{product.description}}</p>
-                    <p class="amount">Amount: {{product.amount}}</p>
-                    <div class="quantity">
-                        <button class="add-product">+</button>
-                        <span class="amount">{{product.amount}}</span>
-                        <button class="remove-product">-</button>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+        <div class="card-container" id = 'product-table'></div>
     </div>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 <br />
 
-
-...
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -229,12 +213,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal" onclick="addProduct()">Add Product</button>
             </div>
         </div>
     </div>
 </div>
-
 
 <script>
     async function getProducts() {
@@ -242,24 +225,26 @@
     }
 
     async function refreshProducts() {
-        document.getElementById("product_table").innerHTML = ""
-        const products = await getProducts()
-        let htmlString = `<tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Description</th>
-            <th>Date Added</th>
-        </tr>`
+        const productCards = document.getElementById("product-table");
+        productCards.innerHTML = ""; // Clear existing cards
+        const products = await getProducts();
         products.forEach((item) => {
-            htmlString += `\n<tr>
-            <td>${item.fields.name}</td>
-            <td>${item.fields.amount}</td>
-            <td>${item.fields.description}</td>
-            <td>${item.fields.date_added}</td>
-        </tr>` 
-        })
-        
-        document.getElementById("product_table").innerHTML = htmlString
+            const card = `
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card {% if forloop.last %}last-card{% endif %}" data-product-id="{{product.id}}">
+                        <h3> ${item.fields.name}</h3>
+                        <p class="description">${item.fields.description}</p>
+                        <p class="amount">Amount: ${item.fields.amount}</p>
+                        <div class="quantity">
+                            <button class="add-product">+</button>
+                            <span class="amount">${item.fields.amount}</span>
+                            <button class="remove-product">-</button>
+                        </div>
+                </div>
+            </div>
+                `;
+        productCards.insertAdjacentHTML("beforeend", card);
+    });
     }
 
     refreshProducts()
@@ -272,6 +257,25 @@
 
         document.getElementById("form").reset()
         return false
+    }
+    document.getElementById("button_add").onclick = addProduct
+
+    function appendProduct(product) {
+        const productTable = document.getElementById('product-table');
+        const newCard = document.createElement('div');
+        newCard.className = 'card';
+        newCard.innerHTML = `
+            <h3>${product.name}</h3>
+            <p class="description">${product.description}</p>
+            <p class="amount">Amount: ${product.amount}</p>
+            <div class="quantity">
+                <button class="add-product" onclick="incrementAmount(${item.pk})">+</button>
+                <span class="amount">${product.amount}</span>
+                <button class="remove-product" onclick="decrementAmount(${item.pk}>-</button>
+            </div>
+            <button class="remove-product" onclick="deleteItem(${item.pk}>Delete</button>
+        `;
+        productTable.appendChild(newCard);
     }
 
     document.querySelectorAll('.add-product').forEach(button => {
