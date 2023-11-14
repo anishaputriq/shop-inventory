@@ -236,10 +236,11 @@
                         <p class="description">${item.fields.description}</p>
                         <p class="amount">Amount: ${item.fields.amount}</p>
                         <div class="quantity">
-                            <button class="add-product">+</button>
+                            <button class="increment-product" onclick="incrementAmount(${item.pk})">+</button>
                             <span class="amount">${item.fields.amount}</span>
-                            <button class="remove-product">-</button>
+                            <button class="decrement-product" onclick="decrementAmount(${item.pk})">-</button>
                         </div>
+                        <button class='deletebutton' onclick="deleteItem(${item.pk})">Delete</button>
                 </div>
             </div>
                 `;
@@ -269,53 +270,58 @@
             <p class="description">${product.description}</p>
             <p class="amount">Amount: ${product.amount}</p>
             <div class="quantity">
-                <button class="add-product" onclick="incrementAmount(${item.pk})">+</button>
+                <button class="increment-product" onclick="incrementAmount(${item.pk})">+</button>
                 <span class="amount">${product.amount}</span>
-                <button class="remove-product" onclick="decrementAmount(${item.pk}>-</button>
+                <button class="decrement-product" onclick="decrementAmount(${item.pk}">-</button>
             </div>
-            <button class="remove-product" onclick="deleteItem(${item.pk}>Delete</button>
+            <button class="remove-product" onclick="deleteItem(${item.pk}">Delete</button>
         `;
         productTable.appendChild(newCard);
     }
 
-    document.querySelectorAll('.add-product').forEach(button => {
-        button.addEventListener('click', () => {
-            const productCard = button.closest('.card');
-            const productId = productCard.getAttribute('data-product-id');
-            incrementAmount(productId);
-        });
-    });
-
-    document.querySelectorAll('.remove-product').forEach(button => {
-        button.addEventListener('click', () => {
-            const productCard = button.closest('.card');
-            const productId = productCard.getAttribute('data-product-id');
-            decrementAmount(productId);
-        });
-    });
-
     // Fungsi untuk menambah produk
     async function incrementAmount(id) {
         const response = await fetch(`/add_product/${id}/`);
-        if (response.status === 200) {
+        if (response.ok) {
             // Jika penambahan produk berhasil, perbarui daftar produk.
             refreshProducts();
+        } else {
+            console.error('Increment request failed:', response.status);
         }
     }
+
 
     async function decrementAmount(id) {
         const response = await fetch(`/decrement_product/${id}/`);
-        if (response.status === 200) {
-            // Jika pengurangan produk berhasil, perbarui daftar produk.
+        if (response.ok) {
+            // Jika penambahan produk berhasil, perbarui daftar produk.
             refreshProducts();
+        } else {
+            console.error('Increment request failed:', response.status);
         }
     }
 
+
     async function deleteItem(id) {
-        const response = await fetch(`/remove_product/${id}/`);
-        if (response.status === 200) {
-            // Jika penghapusan produk berhasil, perbarui daftar produk.
+        try {
+            const csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+            const response = await fetch(`/remove_product/${id}/`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                },
+            });
             refreshProducts();
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Delete request successful', data);
+                refreshProducts();
+            } else {
+                console.error('Delete request failed:', response.status);
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
     }
 

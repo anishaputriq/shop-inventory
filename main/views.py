@@ -93,24 +93,23 @@ def logout_user(request):
     return response
 
 def add_product(request, product_id):
-    if request.method == 'POST' and 'Tambah' in request.POST:
+    if request.method == 'GET' in request.POST:
         product = Item.objects.get(id = product_id)
         product.amount += 1
         product.save()
     return HttpResponseRedirect(reverse('main:show_main'))
 
 def decrement_product(request, product_id):
-    if request.method == 'POST' and 'Kurang' in request.POST:
+    if request.method == 'POST' in request.POST:
         product = Item.objects.get(id = product_id)
         if product.amount > 0 :
             product.amount -= 1
         product.save()
-    return HttpResponseRedirect(reverse('main:show_main'))
+    return HttpResponseRedirect(reverse('main:show_main'), status = 200)
 
 def remove_product(request, product_id):
-    if request.method == 'POST' and 'Hapus' in request.POST:
-        product = Item.objects.get(id = product_id)
-        product.delete()
+    product = Item.objects.get(id = product_id)
+    product.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
 
 def edit_product(request, id):
