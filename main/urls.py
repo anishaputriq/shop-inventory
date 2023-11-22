@@ -2,7 +2,7 @@ from django.urls import path
 from main.views import show_main
 from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
 from main.views import register , decrement_product, add_product, remove_product, get_product_json,add_product_ajax
-from main.views import login_user 
+from main.views import login_user , create_product_flutter
 from main.views import logout_user
 from main.views import edit_product
 
@@ -24,4 +24,5 @@ urlpatterns = [
     path('edit-product/<int:id>', edit_product, name='edit_product'),
     path('get-product/', get_product_json, name='get_product_json'),
     path('create-ajax/', add_product_ajax, name='add_product_ajax'),
+    path('create-flutter/', create_product_flutter, name='create_product_flutter'),
 ]
